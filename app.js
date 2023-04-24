@@ -27,7 +27,7 @@ const item2 = new Item({
 });
 
 const item3 = new Item({
-  name: "Click the checkbox to delete an item"
+  name: "Click the checkbox to delete a task"
 });
 
 const defaultItems = [item1,item2,item3];
@@ -44,7 +44,7 @@ app.get("/", function(req, res){
     if(foundItems.length === 0){
       Item.insertMany(defaultItems)
       .then(function () {
-        console.log("Successfully saved defult items to DB");
+        console.log("Successfully saved default data to Database");
       })
       .catch(function (err) {
         console.log(err);
@@ -100,7 +100,7 @@ app.post("/delete", function(req,res){
 
   if(listName === "Today"){
     Item.findByIdAndRemove(checkedItemId).then(items=>{
-    console.log("Successfully deleted items from Database")
+    console.log("Successfully deleted tasks from Database")
     });
     res.redirect("/")
   }else{
